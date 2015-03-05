@@ -13,7 +13,7 @@ body {
 	position:relative;
 	border:1px solid red; 
 	width:980px;
-	height:1000px;
+	//height:1000px;
 	margin:auto;
 }
 
@@ -147,6 +147,20 @@ p {
 	text-shadow:#DF0101 5px 5px 15px;
 }
 
+#players
+{
+    background-color: #92754c;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+}
+
+#playersdiv
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
 /* end layout for the rest of the pages */
 
 
@@ -173,4 +187,54 @@ table, td {
 	font-family:Russo One;
 	font-size:14px;
 	padding-right:10px;
+}
+
+/* individual player page */
+
+
+#playerImage {
+	border:1px solid white; 
+	width:300px;
+	height:202px;
+	margin-top:10px;
+	margin-left:10px;
+        text-align: center;
+	float:left;
+}
+
+
+#personalInfo {
+	border:1px solid orange; 
+	color:#D1D1D1;
+	width:646px;
+	height:202px;
+	margin-top:10px;
+	margin-left:10px;
+	float:left; 
+}
+
+#column1 {
+	border:1px solid red; 
+	color:#D1D1D1;
+	width:321px;
+	height:202px;
+	float:left;
+}
+
+#column2 {
+	border:1px solid pink; 
+	color:#D1D1D1;
+	width:321px;
+	height:202px;
+	float:left;
+}
+
+#restOfInfo {
+	border:1px solid white; 
+	width:960px;
+	height:400px;
+	margin-top:10px;
+	margin-left:10px;
+	float:left;
+	color:#D1D1D1;
 }

@@ -1,22 +1,38 @@
 <?php include 'header.php'; ?>
-<div id="table">
-<table>
-	<tr><td id="playerName" colspan="14">Player Info</td></tr>
-	<tr id="playerInfo"><td>Team</td><td>Number</td>
-	<td>FirstName</td><td>LastName</td><td>Position</td><td>Status</td>
-	<td>Height</td><td>Weight</td><td>BirthDate</td><td>College</td>
-	<td>Experience</td><td>Active</td><td>Age</td><td>PhotoUrl</td>
-	</tr>
-	<tr>
-	<td></td><td></td><td></td><td></td>
-	<td></td><td></td><td></td><td></td>
-	<td></td><td></td><td></td><td></td>
-	<td></td><td></td>
-	</tr>
-	
-</table>
-</div>
 
+<div id="playersdiv">
+
+<?PHP
+
+$dbs = $db->prepare('select * from players');
+
+        
+    if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
+
+        $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
+
+
+        echo '<table id = "players" border="1">'; 
+        echo '<tr><th>Index</th><th>First Name</th>';
+        echo '<th>Last Name</th><th>Team Name</th><th>Player Number</th><th>Position</th> <th>Go To Player</th>';
+        foreach ($results as $key => $value) {
+            echo '<tr>';
+             echo '<td>', $key ,'</td>';
+             echo '<td>', $value['FirstName'] ,'</td>';
+             echo '<td>', $value['LastName'] ,'</td>';
+             echo '<td>', $value['Team'] ,'</td>';
+             echo '<td>', $value['Number'] ,'</td>';
+             echo '<td>', $value['Position'] ,'</td>';
+             echo '<td><a href="player.php?id=',$key + 1,'">Go To Player</a></td>';
+             echo '</tr>';
+        }
+        echo '</table>';
+    }
+    
+    else {echo 'Something broke :(';}
+            
+?>
+</div> 
 
 
 <!-- back to top -->

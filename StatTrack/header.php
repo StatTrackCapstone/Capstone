@@ -14,7 +14,18 @@ and open the template in the editor.
     </head>
     
     <body>                
-                
+
+
+        
+<?php 
+$host = 'sql.neit.edu';
+$dbname = 'mytable';
+$username = 'SE255_KBaez';
+$password = '001332308';
+
+include 'funcs.php';
+
+$db = new PDO("mysql:host=localhost;dbname=capstone", "root", ""); ?>
         
 <!-- main wrapper -->
 <div id="main-wrapper">
@@ -36,6 +47,7 @@ and open the template in the editor.
 
 <!-- nav -->
 <div id="nav">
+	<a class="nav-bar" href="index.php" title="Home">Home</a>
 	<a class="nav-bar" href="about.php" title="About">About</a>
 	<a class="nav-bar" href="players.php" title="View Players">View Players</a>
 	<a class="nav-bar" href="teams.php" title="View Teams">View Teams</a>
