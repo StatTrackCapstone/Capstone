@@ -117,8 +117,6 @@ and open the template in the editor.
 </div>
         
         <?PHP// var_dump($results); ?>
-
-<!-- back to top -->
-<a href="#" style="float:right;" class="nav-bar">Back to Top</a>
     </body>
+    <?php include "footer.php"; ?>
 </html>

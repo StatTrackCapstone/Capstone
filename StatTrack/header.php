@@ -50,13 +50,17 @@ $db = new PDO("mysql:host=localhost;dbname=capstone", "root", ""); ?>
 	<a class="nav-bar" href="index.php" title="Home">Home</a>
 	<a class="nav-bar" href="about.php" title="About">About</a>
 	<a class="nav-bar" href="players.php" title="View Players">View Players</a>
-	<a class="nav-bar" href="teams.php" title="View Teams">View Teams</a>
-	<a class="nav-bar" href="help.php" title="View Stats">Help</a>
+        <a class="nav-bar" href="teams.php" title="View Teams">View Teams</a>
 	
 <!-- search box -->
 	<div style="float:right; height:50px; margin:auto;" >
-		<label style="color:#D1D1D1; float:left; margin-top:15px">Search: </label><input type="text" name="search" placeholder="Player or Team" style="float:left; margin-top:15px" /> 
-		<input type="button" value="Go" id="search" style="margin-top:15px" />
+            <form action="searchResults.php" Method="Post" style="margin-top:5px; color:white;">
+                <fieldset>
+                    <label>Player Search</label>
+                    <input type="text" name="Player" value=""/>
+                    <input type="submit" value="Search">"
+                </fieldset>
+            </form>
 	</div><!-- end search box -->
 	
 </div><!-- end nav -->

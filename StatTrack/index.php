@@ -4,8 +4,14 @@ $team;
 $dbp = $db->prepare('select * from players where id = :id');
         $dbp->bindParam(':id', $id, PDO::PARAM_INT);
         
-$dbt = $db->prepare('select * from players where Team = :team');
-        $dbt->bindParam(':team', $team, PDO::PARAM_INT);
+/* Team player populate statement.
+ * 
+ * $dbt = $db->prepare('select * from players where Team = :team');
+        $dbt->bindParam(':team', $team, PDO::PARAM_STR);
+ */
+        
+    $dbt= $db->prepare('select * from teams where id = :id');
+        $dbt->bindParam(':id', $id, PDO::PARAM_INT);
         
 $classobj = new funcs();
 
@@ -21,9 +27,9 @@ $classobj = new funcs();
     
     <?PHP
     $id = $classobj->RndPlyr();
+    $Img;
     $FName;
     $LName;
-    $Img;
     
     if($dbp -> execute() && $dbp -> rowCount()> 0)
     {
@@ -54,9 +60,32 @@ $classobj = new funcs();
 </div><!-- end content1 -->
 
 <!-- content2 -->
-<div id="content2">
+<div id="content2"> 
 
-	<h2 style="color:#D1D1D1">Team Name...</h2>
+	<?PHP
+    $id = $classobj->RndTeam();
+    //$Img = "/images/";
+    
+    
+    if($dbt -> execute() && $dbt -> rowCount()> 0)
+    {
+        $results = $dbt->fetchAll(PDO::FETCH_ASSOC);
+        
+        foreach ($results as $key => $value)
+        {
+            $TeamName = $value['TeamName'];
+            $Abbr = $value['TeamAbbreviation'];
+        }
+        
+        echo '<h2 style="color:#D1D1D1">', $TeamName,'&nbsp &nbsp', $Abbr, '</h2> </br>';
+        echo '<a href= "#" > <img src = "images/', $Abbr ,'.jpg"> </a>';
+    }
+    
+    else
+    {
+        echo "something broke :(";
+    }
+    ?>
 
 </div><!-- end content2 -->
 
@@ -68,8 +97,7 @@ $classobj = new funcs();
 <iframe src="http://www.nfl.com" width="960"></iframe>
 </div><!-- end iframe -->
 
-<!-- back to top -->
-<a href="#" style="float:right;" class="nav-bar">Back to Top</a>
+
 
 </div><!-- end main wrapper -->-->
 

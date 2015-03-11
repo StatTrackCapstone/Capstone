@@ -34,14 +34,6 @@ $dbs = $db->prepare('select * from players');
 ?>
 </div> 
 
-
-<!-- back to top -->
-<a href="" style="float:right;" class="nav-bar">Back to Top</a>
-
-        <?php
-        // put your code here
-        ?>
-
         <?php include 'footer.php'; ?>
 
     </body>

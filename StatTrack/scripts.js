@@ -1,8 +1,8 @@
 window.onload=function()
 {
 
-var random_images_array1 = ["bills.jpg", "dolphins.jpg","jets.jpg","patriots.jpg","ravens.jpg"];
-var random_images_array2 = ["chiefs.jpg","cowboys.jpg","cardinals.jpg","giants.jpg","falcons.jpg"];
+var random_images_array1 = ["BUF.jpg", "dolphins.jpg","jets.jpg","patriots.jpg","BAL.jpg"];
+var random_images_array2 = ["chiefs.jpg","cowboys.jpg","ARI.jpg","giants.jpg","ATL.jpg"];
 
 var timerSet=setInterval(function () {timer()}, 3000);
 

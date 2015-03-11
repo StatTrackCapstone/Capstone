@@ -1,15 +1,32 @@
     <?PHP include 'header.php'; ?>
+
+<div id="PlayersContainer">
+<?PHP 
+    $dbs = $db->prepare('select * from teams');
         
-<!-- back to top -->
-<a href="" style="float:right;" class="nav-bar">Back to Top</a>
+    if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
 
-<!-- footer  -->
-<div id="footer">
-<p>&copy; 2015</p>
+        $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
+        
+        echo '<table id = "teams" border="1">'; 
+        echo '<tr><th>Index</th><th>Team Name</th><th>Number of Players</th><th>Go To Team';
+        foreach ($results as $key => $value) {
+            echo '<tr>';
+             echo '<td>', $key ,'</td>';
+             echo '<td>', $value['TeamName'] ,'</td>';
+             echo '<td>', $value['NumPlayers'] ,'</td>';
+             echo '<td> <a href = "team.php?id=', $value['TeamAbbreviation'],'">Go To Team</a>';
+             echo '</tr>';
+        }
+        echo '</table> </br>';
+    }
+?>
+</div>
+</body>
 
-</div><!-- end footer -->
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+
+    
+
+<?php include "footer.php"; ?>
+
+

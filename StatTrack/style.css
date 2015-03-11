@@ -113,6 +113,31 @@ p {
 	color:#D1D1D1;
 }
 
+/* individual team page */
+
+#TeamImage {
+	border:1px solid white; 
+	width:300px; 
+	height:150px;
+	margin-top:10px;
+	margin-left:10px;
+	float:left;
+}
+
+#TeamName {
+	color:#D1D1D1;
+	margin-left:10px;
+}
+
+#TeamPlayers {
+	border:1px solid white; 
+	background-color:black;
+	width:600px;
+	margin-top:10px;
+	margin-left:10px;
+	float:right;
+}
+
 /* layout for the rest of the pages */
 
 #logo2 {
@@ -168,6 +193,14 @@ p {
 
 #teamTable {
 	float:left;
+}
+
+#teams {
+    background-color:brown;
+    float:left;
+    margin-left: 100px;
+    margin-right: auto;
+    
 }
 
 table, td {
