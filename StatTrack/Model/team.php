@@ -1,6 +1,8 @@
-<?php include 'header.php'; ?>
+<!-- Team Page: Displays team logo and players on team. -->
+<?php //File Inclusion
+include '../View/header.php'; ?>
 
-<?php 
+<?php // Variable Declaration and DB Prepare statements
     $Team = filter_input(INPUT_GET, 'id');
     $dbs = $db-> prepare('select * from players where Team = :Team');
     $dbt = $db-> prepare('select TeamName from teams where TeamAbbreviation = :Team');
@@ -8,7 +10,7 @@
     $dbt->bindParam(':Team', $Team, PDO::PARAM_STR);
     
     $TeamFull;
-    
+   //Query execution for displaying Team Name from DB.
    if ( $dbt->execute() && $dbt->rowCount() > 0 )
    {
        $resultsT = $dbt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,14 +30,14 @@ echo '<h2 id="TeamName">',$TeamFull,'</h2>';
 ?>
 
 <div id="TeamImage">
-
-<?PHP echo '<img style="width:200; height:100;" src="images/',$Team,'.jpg"/>' ?>
+<!-- Displays Team Image. -->
+<?PHP echo '<img style="width:200; height:100;" src="../images/',$Team,'.jpg"/>' ?>
 
 </div>
 
 
 <div id="TeamPlayers" style="margin-right: 50px;">
-<?PHP
+<?PHP //Query execution to populate table of players on selected team.
 if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
 
         $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
@@ -62,4 +64,4 @@ if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
 </div>
 
 
-<?php include 'footer.php'; ?>
+<?php include '../View/footer.php'; ?>

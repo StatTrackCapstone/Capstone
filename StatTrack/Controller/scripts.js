@@ -8,7 +8,7 @@ var timerSet=setInterval(function () {timer()}, 3000);
 
 	function getRandomImage1() 
 	{
-		path = 'images/'; 
+		path = '../images/'; 
 		var num = Math.floor(Math.random() * 5 );
 		var imgStr1 = '<img src="' + path + random_images_array1[num] + '" alt = "">';
 
@@ -22,7 +22,7 @@ var timerSet=setInterval(function () {timer()}, 3000);
 	
 	function getRandomImage2() 
 	{
-		path = 'images/'; 
+		path = '../images/'; 
 		var num = Math.floor(Math.random() * 5 );
 		var imgStr2 = '<img src="' + path + random_images_array2[num] + '" alt = "">';
 

@@ -1,45 +1,59 @@
-<?php include 'header.php'; ?>
+<!-- Page for displaying search results from search bar -->
+<?php //Search Results page outputs results from search query to table for user to access.
+
+//Variable Declaration and Include Statements
+
+include '../View/header.php'; ?>
 
 <div id="playersdiv">
 
 <?PHP
 
+//Additional Variable Declaration (non global scope)
 $dbs;
 
 
-$rawName = filter_input(INPUT_POST, 'Player');
-$nameArray = explode(" ", $rawName);
-$count = count($nameArray);
+$rawName = filter_input(INPUT_POST, 'Player'); //take input from post and set to local variable.
+$nameArray = explode(" ", $rawName); //Takes input string and converts to an array for First and Last Name accessing.
+$count = count($nameArray); //Used to determine whether there is a first and last name in the array.
 $fName;
 $lName;
 $id;
-    if($rawName != "")
+    if($rawName != "") // checks whether there is data in variable of if its blank.
     {
-        if($count === 2)
+        if($count === 2)// if there is a first and last name.
         {
             $fName = $nameArray[0];
             $lName = $nameArray[1];
             $dbs = $db->prepare('select * from players where FirstName = :FirstName && LastName = :LastName');
             
         }
-        else if ($count === 1)
+        else if ($count === 1)// if only one value is present fName and lName get set to the first value in array
+            //the sql statement then checks whether the input value is = to a first or last name in the DB
         {
             $fName = $nameArray[0];
             $lName = $nameArray[0];
             $dbs = $db->prepare('select * from players where FirstName = :FirstName || LastName = :LastName');
         }
-        else 
+        else //if more than 2 words are put into the search box it prints out the error below and stops loading the page
         {
-            header("location:index.php");
+            echo "<p style='color:white;'>The value entered in search box was invalid. Check your entry then try again!</p>";
+            exit();
         }
     }
-    else {header("location:index.php");}
+    else 
+        { // If the search box has no value in it the error below is output and page loading stops.
+        echo "<p style='color:white;'>No Value was entered in search box please try again!</p>";
+        exit();
+        }
+    
 //echo $rawName;
 //var_dump($nameArray);
 //echo $fName;
 //echo $lName;
 //echo $count;
     
+    //Bind Paramaters
     $dbs->bindParam(':FirstName', $fName, PDO::PARAM_STR);
     $dbs->bindParam(':LastName', $lName, PDO::PARAM_STR);
        
@@ -51,7 +65,7 @@ $id;
     else {echo "statement did not execute";}
     */
     
-    if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
+    if ( $dbs->execute() && $dbs->rowCount() > 0 ) { //executes query and populates table if data is present.
 
         $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
         
@@ -79,7 +93,7 @@ $id;
 ?>
 </div> 
 
-        <?php include 'footer.php'; ?>
+        <?php include '../View/footer.php'; ?>
 
     </body>
 </html>

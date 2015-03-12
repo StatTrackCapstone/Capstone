@@ -1,9 +1,16 @@
-<?php include 'header.php'; ?>
+<!-- Players Page: Creates a table populated with every player in the DB. -->
+<?php 
+//The players page populates all players in the DB into a table for quick viewing
+//Each player has a link in their row to navigate to players stat page.
+
+// Inclusion Statements
+include '../View/header.php'; ?>
 
 <div id="playersdiv">
 
 <?PHP
 
+//Code to create and populate the table with players from DB
 $dbs = $db->prepare('select * from players');
 
         
@@ -23,7 +30,7 @@ $dbs = $db->prepare('select * from players');
              echo '<td>', $value['Team'] ,'</td>';
              echo '<td>', $value['Number'] ,'</td>';
              echo '<td>', $value['Position'] ,'</td>';
-             echo '<td><a href="player.php?id=',$key + 1,'">Go To Player</a></td>';
+             echo '<td><a href="../Model/player.php?id=',$key + 1,'">Go To Player</a></td>'; //Key + 1 is required due to discrepency between Array index value and DB index value
              echo '</tr>';
         }
         echo '</table>';
@@ -34,7 +41,7 @@ $dbs = $db->prepare('select * from players');
 ?>
 </div> 
 
-        <?php include 'footer.php'; ?>
+        <?php include '../View/footer.php'; ?>
 
     </body>
 </html>

@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
---><?php
-        include 'header.php';
+<!-- Player Page: Displays stats for an INDIVIDUAL player. -->
+<?php
+// Player page shows the individual stats of a player populated from the DB
+
+//Variable Declaration and Include Statements
+        include '../View/header.php';
         $results;
         $id = filter_input(INPUT_GET, 'id');
-        //$id = $id + 1;
-        //echo $id;
         $dbs = $db->prepare('select * from players where id = :id');
         $dbs->bindParam(':id', $id, PDO::PARAM_INT);
         
@@ -26,6 +23,8 @@ and open the template in the editor.
         $Status;
         $Line;
         $Draft;
+        
+        //Query Execution and value setting to variables for output.
         
         if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
             $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
@@ -66,11 +65,11 @@ and open the template in the editor.
     <body>
         
         
-<div id="playerImage">
+<div id="playerImage"><!-- Code to load Player image from db to stat page. -->
 <?PHP echo '<Img src ="', $Img , '" height = "202px" width = "145px">'; ?>
 
 </div>
-
+<!-- Data Population -->
 <div id="personalInfo">
 	
 	<div id="column1">
@@ -118,5 +117,5 @@ and open the template in the editor.
         
         <?PHP// var_dump($results); ?>
     </body>
-    <?php include "footer.php"; ?>
+    <?php include "../View/footer.php"; ?>
 </html>

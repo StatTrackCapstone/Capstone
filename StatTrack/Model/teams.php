@@ -1,7 +1,8 @@
-    <?PHP include 'header.php'; ?>
+<!-- Teams Page: Displays all teams in DB -->
+<?PHP include '../View/header.php'; ?>
 
 <div id="PlayersContainer">
-<?PHP 
+<?PHP  //Query declaration and execution. Table creation and population.
     $dbs = $db->prepare('select * from teams');
         
     if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
@@ -15,7 +16,7 @@
              echo '<td>', $key ,'</td>';
              echo '<td>', $value['TeamName'] ,'</td>';
              echo '<td>', $value['NumPlayers'] ,'</td>';
-             echo '<td> <a href = "team.php?id=', $value['TeamAbbreviation'],'">Go To Team</a>';
+             echo '<td> <a href = "../Model/team.php?id=', $value['TeamAbbreviation'],'">Go To Team</a>';
              echo '</tr>';
         }
         echo '</table> </br>';
@@ -27,6 +28,6 @@
 
     
 
-<?php include "footer.php"; ?>
+<?php include "../View/footer.php"; ?>
 
 

@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script src="scripts.js"></script>
+        <link rel="stylesheet" type="text/css" href="../Controller/style.css"/>
+        <script src="../Controller/scripts.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
         <title>StatTrack</title>
     </head>
@@ -17,16 +11,11 @@ and open the template in the editor.
 
 
         
-<?php 
-$host = 'sql.neit.edu';
-$dbname = 'mytable';
-$username = 'SE255_KBaez';
-$password = '001332308';
-
-include 'funcs.php';
+<?php //File inclusion and variable declaration.
+include '../Controller/funcs.php';
 
 $db = new PDO("mysql:host=localhost;dbname=capstone", "root", ""); ?>
-        
+<!-- persistant header keeps a random team image populated in both boxes on either side of page logo. -->       
 <!-- main wrapper -->
 <div id="main-wrapper">
 
@@ -42,19 +31,19 @@ $db = new PDO("mysql:host=localhost;dbname=capstone", "root", ""); ?>
 
 <!-- logo -->
 <div id="logo">
-	<img src="images/title.jpg" alt="" title="StatTrack" />
+    <a href = "../Model/index.php"> <img src="../images/title.jpg" alt="" title="StatTrack" /> </a>
 </div> <!-- end logo -->
 
 <!-- nav -->
 <div id="nav">
-	<a class="nav-bar" href="index.php" title="Home">Home</a>
-	<a class="nav-bar" href="about.php" title="About">About</a>
-	<a class="nav-bar" href="players.php" title="View Players">View Players</a>
-        <a class="nav-bar" href="teams.php" title="View Teams">View Teams</a>
+    <a class="nav-bar" href="../Model/index.php" title="Home">Home</a>
+	<a class="nav-bar" href="../Model/about.php" title="About">About</a>
+	<a class="nav-bar" href="../Model/players.php" title="View Players">View Players</a>
+        <a class="nav-bar" href="../Model/teams.php" title="View Teams">View Teams</a>
 	
 <!-- search box -->
 	<div style="float:right; height:50px; margin:auto;" >
-            <form action="searchResults.php" Method="Post" style="margin-top:5px; color:white;">
+            <form action="../Model/searchResults.php" Method="Post" style="margin-top:5px; color:white;">
                 <fieldset>
                     <label>Player Search</label>
                     <input type="text" name="Player" value=""/>

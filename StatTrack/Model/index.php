@@ -1,20 +1,17 @@
-<?php include 'header.php';
+<!-- Index Page: Home page for the Application. -->
+<?php //Variable Declaration and inclusion statements
+include '../View/header.php';
+
 $id;
 $team;
-$dbp = $db->prepare('select * from players where id = :id');
-        $dbp->bindParam(':id', $id, PDO::PARAM_INT);
-        
-/* Team player populate statement.
- * 
- * $dbt = $db->prepare('select * from players where Team = :team');
-        $dbt->bindParam(':team', $team, PDO::PARAM_STR);
- */
-        
-    $dbt= $db->prepare('select * from teams where id = :id');
-        $dbt->bindParam(':id', $id, PDO::PARAM_INT);
-        
 $classobj = new funcs();
 
+//DB Prepare Statements dbp is for players dbt is for teams
+$dbp = $db->prepare('select * from players where id = :id');
+    $dbp->bindParam(':id', $id, PDO::PARAM_INT);
+        
+$dbt= $db->prepare('select * from teams where id = :id');
+    $dbt->bindParam(':id', $id, PDO::PARAM_INT);
 ?>
 
 
@@ -26,11 +23,14 @@ $classobj = new funcs();
 <div id="content1">
     
     <?PHP
+    // Additional variable declaration(non global scope)
     $id = $classobj->RndPlyr();
     $Img;
     $FName;
     $LName;
     
+    // Code that populates random player on index page
+    // Player Image is link to players stat page.
     if($dbp -> execute() && $dbp -> rowCount()> 0)
     {
         $results = $dbp->fetchAll(PDO::FETCH_ASSOC);
@@ -43,7 +43,7 @@ $classobj = new funcs();
         }
         
         echo '<h2 style="color:#D1D1D1">', $FName,' ' ,$LName, '</h2> </br>';
-        echo '<a href= "player.php?id=',$id,'" > <img src = " ', $Img ,'"> </a>';
+        echo '<a href= "player.php?id=', $id, '" > <img src = " ', $Img ,'"> </a>';
     }
     
     else
@@ -62,10 +62,12 @@ $classobj = new funcs();
 <!-- content2 -->
 <div id="content2"> 
 
-	<?PHP
-    $id = $classobj->RndTeam();
-    //$Img = "/images/";
+    <?PHP
     
+    $id = $classobj->RndTeam();
+   
+    //code that populates the random team onto index page.
+    //Team image is link to team page.
     
     if($dbt -> execute() && $dbt -> rowCount()> 0)
     {
@@ -78,7 +80,7 @@ $classobj = new funcs();
         }
         
         echo '<h2 style="color:#D1D1D1">', $TeamName,'&nbsp &nbsp', $Abbr, '</h2> </br>';
-        echo '<a href= "#" > <img src = "images/', $Abbr ,'.jpg"> </a>';
+        echo '<a href= "../Model/team.php?id=', $Abbr ,'" > <img src = "../images/', $Abbr ,'.jpg"> </a>';
     }
     
     else
@@ -101,7 +103,7 @@ $classobj = new funcs();
 
 </div><!-- end main wrapper -->-->
 
-<?php include 'footer.php'; ?>
+<?php include '../View/footer.php'; ?>
 
     </body>
 </html>
