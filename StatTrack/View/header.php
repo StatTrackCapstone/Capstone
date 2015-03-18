@@ -7,14 +7,25 @@
         <title>StatTrack</title>
     </head>
     
-    <body>                
+    <body onunload="document.location= ../Controller/saveSession.php">                
 
 
         
 <?php //File inclusion and variable declaration.
 include '../Controller/funcs.php';
 
-$db = new PDO("mysql:host=localhost;dbname=capstone", "root", ""); ?>
+session_id('admin');
+session_start();
+
+if($_SESSION['state'] !== true)
+{
+    $_SESSION['state'] = false;
+}
+
+  
+$db = new PDO("mysql:host=localhost;dbname=capstone", "root", ""); var_dump($_SESSION['state']);?>
+        
+        
 <!-- persistant header keeps a random team image populated in both boxes on either side of page logo. -->       
 <!-- main wrapper -->
 <div id="main-wrapper">
@@ -47,7 +58,7 @@ $db = new PDO("mysql:host=localhost;dbname=capstone", "root", ""); ?>
                 <fieldset>
                     <label>Player Search</label>
                     <input type="text" name="Player" value=""/>
-                    <input type="submit" value="Search">"
+                    <input type="submit" value="Search"/>
                 </fieldset>
             </form>
 	</div><!-- end search box -->

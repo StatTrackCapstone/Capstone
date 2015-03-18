@@ -8,22 +8,7 @@
         $id = filter_input(INPUT_GET, 'id');
         $dbs = $db->prepare('select * from players where id = :id');
         $dbs->bindParam(':id', $id, PDO::PARAM_INT);
-        
-        $FName = "";
-        $Img = "";
-        $LName = "";
-        $Number;
-        $Team;
-        $Pos;
-        $Height;
-        $Weight;
-        $College;
-        $DOB;
-        $Age;
-        $Status;
-        $Line;
-        $Draft;
-        
+       
         //Query Execution and value setting to variables for output.
         
         if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
@@ -47,6 +32,7 @@
                 $Draft = $value["CollegeDraftYear"];
                 $Exp = $value["Experience"];
             }
+            
         }
                 
         else
@@ -61,6 +47,12 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <?PHP if ($_SESSION['state'] === true)
+        {
+            echo '<a href=../Model/updatePlayerPg.php?id="',$id,'"> Edit Player </a>';
+        }
+?>
+        
     </head>
     <body>
         

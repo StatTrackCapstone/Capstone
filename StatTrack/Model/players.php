@@ -4,7 +4,9 @@
 //Each player has a link in their row to navigate to players stat page.
 
 // Inclusion Statements
-include '../View/header.php'; ?>
+include '../View/header.php'; 
+$id;
+?>
 
 <div id="playersdiv">
 
@@ -23,14 +25,15 @@ $dbs = $db->prepare('select * from players');
         echo '<tr><th>Index</th><th>First Name</th>';
         echo '<th>Last Name</th><th>Team Name</th><th>Player Number</th><th>Position</th> <th>Go To Player</th>';
         foreach ($results as $key => $value) {
-            echo '<tr>';
+             $id = $value['id'];
+             echo '<tr>';
              echo '<td>', $key ,'</td>';
              echo '<td>', $value['FirstName'] ,'</td>';
              echo '<td>', $value['LastName'] ,'</td>';
              echo '<td>', $value['Team'] ,'</td>';
              echo '<td>', $value['Number'] ,'</td>';
              echo '<td>', $value['Position'] ,'</td>';
-             echo '<td><a href="../Model/player.php?id=',$key + 1,'">Go To Player</a></td>'; //Key + 1 is required due to discrepency between Array index value and DB index value
+             echo '<td><a href="../Model/player.php?id=',$id,'">Go To Player</a></td>';
              echo '</tr>';
         }
         echo '</table>';
