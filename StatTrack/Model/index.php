@@ -43,7 +43,7 @@ $dbt= $db->prepare('select * from teams where id = :id');
         }
         
         echo '<h2 style="color:#D1D1D1">', $FName,' ' ,$LName, '</h2> </br>';
-        echo '<a href= "player.php?id=', $id, '" > <img src = " ', $Img ,'"> </a>';
+        echo '<a href= "player.php?id=', $id, '" > <img class = "pics" src = " ', $Img ,'"> </a>';
     }
     
     else
@@ -80,7 +80,7 @@ $dbt= $db->prepare('select * from teams where id = :id');
         }
         
         echo '<h2 style="color:#D1D1D1">', $TeamName,'&nbsp &nbsp', $Abbr, '</h2> </br>';
-        echo '<a href= "../Model/team.php?id=', $Abbr ,'" > <img src = "../images/', $Abbr ,'.jpg"> </a>';
+        echo '<a href= "../Model/team.php?id=', $Abbr ,'" > <img class = "img" height = "202px" width = "145px" src = "../images/', $Abbr ,'.jpg"> </a>';
     }
     
     else

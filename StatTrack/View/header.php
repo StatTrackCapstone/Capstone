@@ -7,7 +7,7 @@
         <title>StatTrack</title>
     </head>
     
-    <body onunload="document.location= ../Controller/saveSession.php">                
+    <body>                
 
 
         
@@ -17,7 +17,7 @@ include '../Controller/funcs.php';
 session_id('admin');
 session_start();
 
-if($_SESSION['state'] !== true)
+if(!isset($_SESSION['state']))
 {
     $_SESSION['state'] = false;
 }

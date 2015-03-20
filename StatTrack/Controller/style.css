@@ -11,7 +11,7 @@ body {
 
 #main-wrapper {
 	position:relative;
-	border:1px solid red; 
+	/* border:1px solid red; */
 	width:980px;
 	//height:1000px;
 	margin:auto;
@@ -68,7 +68,7 @@ body {
 }
 
 #container {
-	border:1px solid orange; 
+	//border:1px solid orange; 
 	width:960px;
 	height:500px;
 	margin-top:25px;
@@ -102,7 +102,7 @@ body {
 }
 
 #footer {
-	border:1px solid green; 
+	//border:1px solid green; 
 	clear:both;
 	width:980px;
 	height:100px;
@@ -116,7 +116,7 @@ p {
 /* individual team page */
 
 #TeamImage {
-	border:1px solid white; 
+	//border:1px solid white; 
 	width:300px; 
 	height:150px;
 	margin-top:10px;
@@ -151,7 +151,7 @@ p {
 }
 
 #nav2 {
-	border:1px solid purple; 
+	//border:1px solid purple; 
 	width:715px;
 	height:50px;
 	margin-top:20px;
@@ -270,4 +270,11 @@ table, td {
 	margin-left:10px;
 	float:left;
 	color:#D1D1D1;
+}
+
+.pics
+{
+     height: 202px;
+     width: 145px;
+     margin-left: 100px;
 }
